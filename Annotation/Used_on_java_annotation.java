@@ -46,3 +46,59 @@ public @interface Target{
     RetentionPolicy.RUNTIME: Annotation will be recorded in .class file + available during runtime.
     Usage of reflection can be done 
 */
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.CONSTRUCTOR, ElementType.METHOD})
+public @interface SafeVarargs{
+
+}
+
+public class Log{
+    @SafeVarargs
+    public static void printLogValues(List<Integer> ...logNumberList){
+        Object[] objectList = logNumberList;
+
+        List<String> stringValueList = new ArrayList<>();
+        stringValueList.add('Hello');
+        objectList[0] = stringValueList;
+    }
+}
+
+
+/*
+    @Documented:
+    - By default, Annotations are ignored when java documentation is generated 
+    - With this meta-annotation even annotation will come in java docs 
+*/
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.CONSTRUCTOR, ElementType.METHOD})
+public @interface MyCustomAnnotation{
+
+}
+
+/*
+    @Inherited
+    - By default annotation, applied on parent class will not be available for child classes
+    - But it present after aplying this meta annotation
+    - This meta-annotatin has no effect, if annotation is used other than class 
+*/
+
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.CONSTRUCTOR, ElementType.METHOD})
+public @interface MyCustomAnnotationInherited{
+
+}
+
+/*
+    Repeatable
+    - allow us to use the same annotation more than once at same place 
+    - cannot be implemented before java8
+*/
+
+@Repeatable(Categories.class)
+@interface Category{
+    Stirng name();
+}
