@@ -37,3 +37,8 @@ Ans. There 3 ways through which it can be achieved :-
     *Collection* is part of Java collection framework. And its an interface which expose various methods which is implemented by various collection classes like ArrayList, Stack, LinkedList etc.
 
     *Collections* is a Utility calss and provide static methods, which are used to operate on collections like sorting, swapping, searching, reverse, copy etc
+
+6. Queue
+    ![alt text](images/image-6.png)
+
+7. Priority-Queue (minHeap and maxHeap)
