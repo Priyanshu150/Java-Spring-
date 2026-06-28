@@ -46,5 +46,11 @@ Ans. There 3 ways through which it can be achieved :-
 8. Comparator v/s Comparable 
     Both provide a way to sort the collection of objects
     ![alt text](images/image-7.png)
-    
-    8.1 Prim
+
+9. Deque
+    ![alt text](images/image-8.png)
+
+10. Array-Deque: A concrete class implements the methods which are avialble in Queue and deque Interface.
+
+11. Thread safe version of pq and array queue
+    ![alt text](images/image-9.png)
