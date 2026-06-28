@@ -54,3 +54,16 @@ Ans. There 3 ways through which it can be achieved :-
 
 11. Thread safe version of pq and array queue
     ![alt text](images/image-9.png)
+
+12. List: 
+    - List is a ordered collection of an objects. In which duplicate values can be stored
+    ![alt text](images/image-10.png)
+    ![alt text](images/image-11.png)
+    ![alt text](images/image-12.png)
+    ![alt text](images/image-13.png)
+
+13. LinkedList
+    - Implements boths Deque and List interface
+    - means it supports deque methods like: getFirst, getLast, removeFirst etc.
+    - It supports index based operation like: get(Index), add(index, object) etc.
+    ![alt text](images/image-14.png)
