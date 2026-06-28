@@ -74,3 +74,32 @@ Ans. There 3 ways through which it can be achieved :-
 15. Stack 
     ![alt text](images/image-16.png)
     ![alt text](images/image-17.png)
+
+16. Map
+    ![alt text](images/image-18.png)
+    ![alt text](images/image-19.png)
+
+17. HashMaap
+    - can store null key or values(HashTable do not contains null key or value)
+    - Hash Map do not maintains the insertion order
+    - Its not thread  safe (instead use ConcurrentHashMap or HashTable for thread safe HashMap implementation)
+
+18. LinkedHashMap: 
+    - Helps in maintain insertion order 
+        or 
+    - Helps in maintain access order 
+
+    - Similar to HashMap, but also use double LinkedList
+    ![alt text](images/image-20.png)
+
+19. TreeMap:
+    - Map is sorted according to its natural ordering of its key or by Comparator provided during map creation
+    - Its based on the Red-Black tree (Self balancing binary serach tree)
+
+20. Sorted Map
+    ![alt text](images/image-21.png)
+
+21. NaviagableMap
+    ![alt text](images/image-22.png)
+    ![alt text](images/image-23.png)
+    ![alt text](images/image-24.png)
