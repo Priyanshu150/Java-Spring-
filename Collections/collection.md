@@ -103,3 +103,30 @@ Ans. There 3 ways through which it can be achieved :-
     ![alt text](images/image-22.png)
     ![alt text](images/image-23.png)
     ![alt text](images/image-24.png)
+
+22. Set 
+    ![alt text](images/image-25.png)
+    ![alt text](images/image-26.png)
+
+23. HashSet
+    Data Structure used: HashMap
+    HashMap<E, Object> map = new HashMap<> ();
+
+    - During add method invocation, it stored the element in the key pat and in value it stores the dummy object: map.put(element, new Object())
+
+    - What if 2 values get the same hash value ? how it handled ? what is load factor
+
+    - No guarantee that the order will remain constant
+
+    - HashSet is not threadSafe. newKeySet method present in ConcurrentHashMap class is used to create threadSafe Set.
+    ![alt text](images/image-26.png)
+
+24. LinkedHashSet
+    - internally it uses: LinkedHashMap
+    - Maintains the insertion Order of the element 
+    - Its not thread safe:
+    Set<Integer> set = Collections.synchronizedMap(new LinkedHashSet<>());
+
+25. TreeSet:
+    - Internally it uses: TreeMap
+    - It can not store null value
