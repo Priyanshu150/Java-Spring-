@@ -13,15 +13,30 @@ public class Car implements Comparator<Car>{
         this.carType = type;
     }
 
-    @Overrider
+    @Override
     public int compare(Car o1, Car o2){
         return o1.carName.compareTo(o2.carName);
     }
 }
 
+public class Bike implements Comparable<Bike>{
+    String bikeName;
+    String bikeType;
+
+    Bike(String name, String type){
+        this.bikeName = name;
+        this.bikeType = type;
+    }
+
+    @Override
+    public int compareTo(Bike obj){
+        return this.bikeName.compareTo(obj.bikeName);
+    }
+}
+
 // function to compare 2 objects
 public class CarNameComparator implements Comparator<Car> {
-    @Overrider
+    @Override
     public int compare(Car o1, Car o2){
         return o2.carName.compareTo(o1.carName);
     }
@@ -60,5 +75,12 @@ public class Main{
 
         // using comparator implement inside the same class
         Collections.sort(cars, new Car());
+
+        // example of comparable 
+        List<Bike> bikes = new ArrayList<>();
+        bikes.add(new Bike("Hayabusa", "PETROL"));
+        bikes.add(new Bike("ATHER", "EV"));
+
+        Collections.sort(bikes);
     }
 }
