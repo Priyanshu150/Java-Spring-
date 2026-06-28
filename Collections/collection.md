@@ -67,3 +67,10 @@ Ans. There 3 ways through which it can be achieved :-
     - means it supports deque methods like: getFirst, getLast, removeFirst etc.
     - It supports index based operation like: get(Index), add(index, object) etc.
     ![alt text](images/image-14.png)
+
+14. Vector 
+    ![alt text](images/image-15.png)
+
+15. Stack 
+    ![alt text](images/image-16.png)
+    ![alt text](images/image-17.png)
