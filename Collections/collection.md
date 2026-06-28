@@ -1,132 +1,209 @@
-1. What is Java Collection framework ?
+# Java Collection Framework
 
-- Added in java version 1.2
-- Collection is nothing but a group of Object 
-- Present in java.util package 
-- Framework provide us the architecture to manage these "group of objects" i.e  add , update delete, search etc 
+## 1. What is the Java Collection Framework?
 
-2. Why we need Java Collection Framework ? 
-- Prior to JCF, we have Array, Vector, Hash tables.
-- But problem with that is, there is no common interface, so its difficult to  remember the methods for each 
+- Added in Java version **1.2**
+- A collection is a group of objects
+- Present in the `java.util` package
+- The framework provides an architecture to manage groups of objects — add, update, delete, search, etc.
 
-Java Collection Framework Hierarchy 
+## 2. Why Do We Need the Java Collection Framework?
 
-![alt text](images/image.png)
+- Prior to JCF, Java had Arrays, Vectors, and HashTables
+- The problem was there was **no common interface**, making it difficult to remember methods for each data structure
+- JCF solved this by providing a unified architecture with consistent interfaces
 
-![alt text](images/image-1.png)
+![Collection Framework Hierarchy](Images/image.png)
 
+![Collection Framework Hierarchy (extended)](Images/image-1.png)
 
-3. Iterable 
+## 3. Iterable
 
-![alt text](images/image-2.png)
+- The root interface of the collection hierarchy
+- Any class that implements `Iterable` can be used in a for-each loop
 
-4. Collection: It represent the group of object. Its an interface which provides methods to work on group of objects.
+![Iterable](Images/image-2.png)
 
-![alt text](images/image-4.png)
+## 4. Collection Interface
 
-Q. If Iterable, collections are interfaces. How can they give the concrete implementation of any method ??
-Ans. There 3 ways through which it can be achieved :- 
-    - Abstract classes in the middle
-        ![alt text](images/image-5.png)
+Represents a group of objects. It's an interface that provides methods to work on groups of objects.
 
-    - Default method in interface (Java 8+)
+![Collection Interface](Images/image-4.png)
 
-    - Static methods in Interface (Java 8+)
+**Q. If `Iterable` and `Collection` are interfaces, how can they provide concrete method implementations?**
 
-5. Collection vs Collections 
-    *Collection* is part of Java collection framework. And its an interface which expose various methods which is implemented by various collection classes like ArrayList, Stack, LinkedList etc.
+There are 3 ways this can be achieved:
 
-    *Collections* is a Utility calss and provide static methods, which are used to operate on collections like sorting, swapping, searching, reverse, copy etc
+1. **Abstract classes in the middle** — e.g., `AbstractList`, `AbstractSet`
 
-6. Queue
-    ![alt text](images/image-6.png)
+   ![Abstract classes](Images/image-5.png)
 
-7. Priority-Queue (minHeap and maxHeap)
+2. **Default methods in interfaces** (Java 8+)
 
-8. Comparator v/s Comparable 
-    Both provide a way to sort the collection of objects
-    ![alt text](images/image-7.png)
+3. **Static methods in interfaces** (Java 8+)
 
-9. Deque
-    ![alt text](images/image-8.png)
+## 5. Collection vs Collections
 
-10. Array-Deque: A concrete class implements the methods which are avialble in Queue and deque Interface.
+| | `Collection` | `Collections` |
+|---|---|---|
+| **Type** | Interface | Utility class |
+| **Purpose** | Defines the core contract for data structures like `ArrayList`, `Stack`, `LinkedList` | Provides static utility methods to operate on collections |
+| **Examples** | `add()`, `remove()`, `size()` | `sort()`, `swap()`, `search()`, `reverse()`, `copy()` |
 
-11. Thread safe version of pq and array queue
-    ![alt text](images/image-9.png)
+## 6. Queue
 
-12. List: 
-    - List is a ordered collection of an objects. In which duplicate values can be stored
-    ![alt text](images/image-10.png)
-    ![alt text](images/image-11.png)
-    ![alt text](images/image-12.png)
-    ![alt text](images/image-13.png)
+- Follows **FIFO** (First In, First Out) ordering
+- Elements are inserted at the tail and removed from the head
 
-13. LinkedList
-    - Implements boths Deque and List interface
-    - means it supports deque methods like: getFirst, getLast, removeFirst etc.
-    - It supports index based operation like: get(Index), add(index, object) etc.
-    ![alt text](images/image-14.png)
+![Queue](Images/image-6.png)
 
-14. Vector 
-    ![alt text](images/image-15.png)
+## 7. PriorityQueue (MinHeap and MaxHeap)
 
-15. Stack 
-    ![alt text](images/image-16.png)
-    ![alt text](images/image-17.png)
+- Elements are ordered by their **natural ordering** or by a `Comparator`
+- Default is a **min-heap** (smallest element at the head)
+- For a **max-heap**, provide a reverse comparator: `new PriorityQueue<>(Collections.reverseOrder())`
 
-16. Map
-    ![alt text](images/image-18.png)
-    ![alt text](images/image-19.png)
+## 8. Comparator vs Comparable
 
-17. HashMaap
-    - can store null key or values(HashTable do not contains null key or value)
-    - Hash Map do not maintains the insertion order
-    - Its not thread  safe (instead use ConcurrentHashMap or HashTable for thread safe HashMap implementation)
+Both provide a way to sort a collection of objects.
 
-18. LinkedHashMap: 
-    - Helps in maintain insertion order 
-        or 
-    - Helps in maintain access order 
+![Comparator vs Comparable](Images/image-7.png)
 
-    - Similar to HashMap, but also use double LinkedList
-    ![alt text](images/image-20.png)
+| | `Comparable` | `Comparator` |
+|---|---|---|
+| **Package** | `java.lang` | `java.util` |
+| **Method** | `compareTo(Object o)` | `compare(Object o1, Object o2)` |
+| **Modifies original class?** | Yes | No |
+| **Use case** | Natural/default ordering | Custom/multiple orderings |
 
-19. TreeMap:
-    - Map is sorted according to its natural ordering of its key or by Comparator provided during map creation
-    - Its based on the Red-Black tree (Self balancing binary serach tree)
+## 9. Deque
 
-20. Sorted Map
-    ![alt text](images/image-21.png)
+- **Double-ended queue** — supports insertion and removal at both ends
+- Can be used as both a **stack** and a **queue**
 
-21. NaviagableMap
-    ![alt text](images/image-22.png)
-    ![alt text](images/image-23.png)
-    ![alt text](images/image-24.png)
+![Deque](Images/image-8.png)
 
-22. Set 
-    ![alt text](images/image-25.png)
-    ![alt text](images/image-26.png)
+## 10. ArrayDeque
 
-23. HashSet
-    Data Structure used: HashMap
-    HashMap<E, Object> map = new HashMap<> ();
+- A concrete class that implements both `Queue` and `Deque` interfaces
+- Backed by a resizable array
+- Generally faster than `LinkedList` for stack/queue use cases
 
-    - During add method invocation, it stored the element in the key pat and in value it stores the dummy object: map.put(element, new Object())
+## 11. Thread-Safe Versions of PriorityQueue and ArrayDeque
 
-    - What if 2 values get the same hash value ? how it handled ? what is load factor
+![Thread-safe queue variants](Images/image-9.png)
 
-    - No guarantee that the order will remain constant
+## 12. List
 
-    - HashSet is not threadSafe. newKeySet method present in ConcurrentHashMap class is used to create threadSafe Set.
-    ![alt text](images/image-26.png)
+- An **ordered** collection of objects
+- **Duplicate values** are allowed
+- Supports index-based access
 
-24. LinkedHashSet
-    - internally it uses: LinkedHashMap
-    - Maintains the insertion Order of the element 
-    - Its not thread safe:
-    Set<Integer> set = Collections.synchronizedMap(new LinkedHashSet<>());
+![List](Images/image-10.png)
+![List](Images/image-11.png)
+![List](Images/image-12.png)
+![List](Images/image-13.png)
 
-25. TreeSet:
-    - Internally it uses: TreeMap
-    - It can not store null value
+## 13. LinkedList
+
+- Implements both `Deque` and `List` interfaces
+- Supports Deque methods: `getFirst()`, `getLast()`, `removeFirst()`, etc.
+- Supports index-based operations: `get(index)`, `add(index, object)`, etc.
+
+![LinkedList](Images/image-14.png)
+
+## 14. Vector
+
+- Similar to `ArrayList` but **thread-safe** (all methods are synchronized)
+- Legacy class; prefer `ArrayList` with explicit synchronization or `CopyOnWriteArrayList` in modern code
+
+![Vector](Images/image-15.png)
+
+## 15. Stack
+
+- Extends `Vector` and follows **LIFO** (Last In, First Out) ordering
+- Legacy class; prefer `ArrayDeque` as a stack in modern code
+
+![Stack](Images/image-16.png)
+![Stack methods](Images/image-17.png)
+
+## 16. Map
+
+- Stores data as **key-value pairs**
+- Keys must be unique; values can be duplicated
+
+![Map](Images/image-18.png)
+![Map](Images/image-19.png)
+
+## 17. HashMap
+
+- Allows **one `null` key** and multiple `null` values (unlike `HashTable`)
+- Does **not** maintain insertion order
+- **Not thread-safe** — use `ConcurrentHashMap` or `HashTable` for thread-safe alternatives
+
+## 18. LinkedHashMap
+
+- Extends `HashMap` and also uses a **doubly linked list**
+- Can maintain either:
+  - **Insertion order** (default)
+  - **Access order** (set via constructor flag)
+
+![LinkedHashMap](Images/image-20.png)
+
+## 19. TreeMap
+
+- Entries are sorted by the **natural ordering of keys** or by a `Comparator` provided at creation time
+- Internally backed by a **Red-Black tree** (self-balancing binary search tree)
+- Does **not** allow `null` keys
+
+## 20. SortedMap
+
+- Extends `Map` and guarantees keys are in **sorted order**
+
+![SortedMap](Images/image-21.png)
+
+## 21. NavigableMap
+
+- Extends `SortedMap` with navigation methods like `lowerKey()`, `floorKey()`, `ceilingKey()`, `higherKey()`
+- `TreeMap` is the primary implementation
+
+![NavigableMap](Images/image-22.png)
+![NavigableMap methods](Images/image-23.png)
+![NavigableMap methods](Images/image-24.png)
+
+## 22. Set
+
+- A collection that **does not allow duplicate elements**
+- Models the mathematical set abstraction
+
+![Set](Images/image-25.png)
+![Set](Images/image-26.png)
+
+## 23. HashSet
+
+- Internally backed by a `HashMap<E, Object>`
+- On `add(element)`, it calls `map.put(element, DUMMY_OBJECT)`
+- **No guaranteed order** of elements
+- **Not thread-safe** — use `ConcurrentHashMap.newKeySet()` for a thread-safe set
+
+Key concepts to know:
+- What happens when two values get the same hash? → **Hash collision**, handled via chaining or open addressing
+- What is the **load factor**? → Default is `0.75`; controls when the map resizes
+
+![HashSet](Images/image-27.png)
+
+## 24. LinkedHashSet
+
+- Internally backed by a `LinkedHashMap`
+- Maintains **insertion order**
+- **Not thread-safe** — for a thread-safe version:
+
+```java
+Set<Integer> set = Collections.synchronizedSet(new LinkedHashSet<>());
+```
+
+## 25. TreeSet
+
+- Internally backed by a `TreeMap`
+- Elements are stored in **sorted (natural) order**
+- Does **not** allow `null` values
