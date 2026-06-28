@@ -42,3 +42,9 @@ Ans. There 3 ways through which it can be achieved :-
     ![alt text](images/image-6.png)
 
 7. Priority-Queue (minHeap and maxHeap)
+
+8. Comparator v/s Comparable 
+    Both provide a way to sort the collection of objects
+    ![alt text](images/image-7.png)
+    
+    8.1 Prim
