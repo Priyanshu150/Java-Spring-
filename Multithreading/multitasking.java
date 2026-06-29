@@ -22,7 +22,7 @@ public class Main{
 
 // Implement the Thread Class
 
-public classs MultithreadingLearning2 extendss Thread{
+public class MultithreadingLearning2 extends Thread{
     @Override
     public void run(){
         System.out.println("code executed by thread: " + Thread.currentThread().getName());
@@ -31,7 +31,7 @@ public classs MultithreadingLearning2 extendss Thread{
 
 public class Main{
     public static void main(String[] args) {
-        System.out.println("Going inside the main method: " + Thread.currentThread().getName()) ;
+        System.out.println("Going inside the main method: " + Thread.currentThread().getName());
         MultithreadingLearning2 myThread = new MultithreadingLearning2();
         myThread.start();
         System.out.println("Finish main mehtod: " + Thread.currentThread().getName());
@@ -94,7 +94,7 @@ public class SharedResource{
         System.out.println("ConsumeItem method invoked by: " + Thread.currentThread().getName());
 
         // using while loop to avoid 'Suprious wake-up', sometime becuase of system noise 
-        while(itemAvailable){
+        while(!itemAvailable){
             try {
                 System.out.println("ConsumeItem mehtod invoked by: " + Thread.currentThread().getName() + " is waiting now");
                 wait();     // it releases the monitor lock 
@@ -163,5 +163,73 @@ public class Main{
  Two threads, a producer and consumer, share a common, fixed-size buffer as as queue
  The producer's job is to generate data and put it into the buffer, while consumer's job is to consume the data from the buffer.
  The problem is to make sure that the producer worn't produce data if the buffer is full, and the consume won't consume data if the buffer is empty.
- 
 */
+
+public class SharedResource {
+
+    private Queue<Integer> sharedBuffer;
+    private int bufferSize;
+
+    public SharedResource(int bufferSize) {
+        sharedBuffer = new LinkedList<>();
+        this.bufferSize = bufferSize;
+    }
+
+    public synchronized void produce(int item) throws Exception {
+        // If Buffer is full, wait for the consumer to consume items
+        while(sharedBuffer.size() == bufferSize) {
+            System.out.println("Buffer is full, Producer is waiting for consumer");
+            wait();
+        }
+        sharedBuffer.add(item);
+        System.out.println("Produced: " + item);
+        // Notify the consumer that there are items to consume now
+        notify();
+    }
+
+    public synchronized int consume() throws Exception {
+        // Buffer is empty, wait for the producer to produce items
+        while(sharedBuffer.isEmpty()) {
+            System.out.println("Buffer is empty, Consumer is waiting for producer");
+            wait();
+        }
+        int item = sharedBuffer.poll();
+        System.out.println("Consumed: " + item);
+        // Notify the producer that there is space in the buffer now
+        notify();
+        return item;
+    }
+}
+
+public class ProducerConsumerLearning {
+
+    public static void main(String args[]) {
+
+        SharedResource sharedBuffer = new SharedResource(3);
+
+        // creating producer thread using Lambda expression
+        Thread producerThread = new Thread(() -> {
+            try {
+                for(int i = 1; i <= 6; i++) {
+                    sharedBuffer.produce(i);
+                }
+            } catch(Exception e) {
+                // handle exception here
+            }
+        });
+
+        // creating consumer thread using Lambda expression
+        Thread consumerThread = new Thread(() -> {
+            try {
+                for(int i = 1; i <= 6; i++) {
+                    sharedBuffer.consume();
+                }
+            } catch(Exception e) {
+                // handle exception here
+            }
+        });
+
+        producerThread.start();
+        consumerThread.start();
+    }
+}
