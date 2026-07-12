@@ -5,15 +5,15 @@ Operator : This indicate what actions to perform like add, subtract etc
 Operand : This indicate the items, on which actions has to be performed 
 Expression : It consists of more or more operand and 0 or more operator 
 
-![alt text](image.png)
+![alt text](Images/image.png)
 
 assocatiative rule
 
-![alt text](image-1.png)
+![alt text](Images/image-1.png)
 
 2. Control flow statements 
 
-![alt text](image-2.png)
+![alt text](Images/image-2.png)
 
     2.1 Few things to take care for switch cases:
         - Two cases can not have the same value
